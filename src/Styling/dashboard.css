@@ -1,0 +1,119 @@
+.dashboard {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100vh;
+  margin-top: 100px;
+}
+
+.app-name {
+  text-transform: uppercase;
+  background-image: url("https://i.pinimg.com/736x/c3/42/ae/c342ae3a5886b6e165d0a1e0cbab43e8.jpg");
+  font-size: 10em;
+  background-position: cover;
+  background-clip: text;
+  color: transparent;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.wrapper {
+  width: 100%;
+  /* overflow: hidden; */
+  /* background-color: red; */
+}
+
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: marquee 2s linear infinite alternate;
+}
+
+.marquee img {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  /* background-color: red; */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(40vw, 0, 0);
+  }
+  100% {
+    transform: translate3d(-5vw, 0, 0);
+  }
+}
+.btn {
+  margin: 30px;
+  display: box;
+  position: relative;
+  width: 200px;
+  height: 100px;
+  background: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgb(97, 97, 97) 100%);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  line-height: 100px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  margin-bottom: 50px;
+}
+
+.btn::before {
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: black;
+  opacity: 0;
+  content: "";
+  animation: pulse 1s infinite;
+}
+
+/* .btn:hover::before {
+  animation: none;
+  opacity: 0.4;
+  transform: scale(1.3);
+} */
+
+.btn:hover {
+  content: "";
+  animation: none;
+  scale: 1.1;
+  cursor: pointer;
+}
+
+.btn.is-clicked {
+  background: linear-gradient(to bottom, gray 0%, dimgray 100%);
+}
+.btn.is-clicked:before {
+  animation: blastOut 1s;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  to {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+@keyframes blastOut {
+  from {
+    transform: scale(0.9);
+    opacity: 0.4;
+  }
+  to {
+    transform: scale(10);
+    opacity: 0;
+  }
+}

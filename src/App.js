@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+// import "./App.css";
+import SignUp from "./components/signup.js";
+import { db } from "./config/firebase";
+import { getDocs, collection } from "firebase/firestore";
+import Login from "./components/login.js";
+import AddTaskForm from "./components/addTask.js";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ViewTasks from "./components/viewTasks.js";
+import Dashboard from "./components/dashboard.js";
+import UpdateTask from "./components/updateTask.js";
+import MyContext from "./components/context.js";
 
-function App() {
+const App = () => {
+  const [userData, setUserData] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MyContext.Provider value={{ user: userData }}>
+      <div className="">
+        <BrowserRouter>
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={<Login setUserData={setUserData} />}
+            />
+            <Route exact path="/SignUp" element={<SignUp />} />
+            <Route exact path="/addTask/:uName" element={<AddTaskForm />} />
+            <Route exact path="/viewTasks/:uName" element={<ViewTasks />} />
+            <Route exact path="/Dashboard/:uName" element={<Dashboard />} />
+            <Route exact path="/update" element={<UpdateTask />} />
+          </Routes>
+        </BrowserRouter>
+        {/* <Dashboard /> */}
+      </div>
+    </MyContext.Provider>
   );
-}
+};
 
 export default App;
