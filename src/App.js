@@ -21,7 +21,7 @@ const App = () => {
           <Routes>
             <Route
               exact
-              path="/"
+              path="/Tick-Tick"
               element={<Login setUserData={setUserData} />}
             />
             <Route exact path="/SignUp" element={<SignUp />} />
